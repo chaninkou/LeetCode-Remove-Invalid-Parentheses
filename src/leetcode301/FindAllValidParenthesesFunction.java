@@ -12,7 +12,9 @@ public class FindAllValidParenthesesFunction {
 		return result;
 	}
 
-	public void remove(String s, List<String> result, int iStart, int jStart, char openPar, char closedPar) {
+	// First remove all the extra closed parenthesis first
+	// Then reverse the string to remove all the extra closed parenthesis
+	private void remove(String s, List<String> result, int iStart, int jStart, char openPar, char closedPar) {
 		int numOfOpen = 0;
 		int numOfClosed = 0;
 
@@ -38,13 +40,14 @@ public class FindAllValidParenthesesFunction {
 			}
 		}
 
-		// No more invalid closed parenthesis, Check the open parenthesis now from the opposite direction
+		// No more invalid closed parenthesis
+		// Reverse to check the if there is any extra open parenthesis
 		String reversedWord = new StringBuilder(s).reverse().toString();
 
+		// '(' mean we finished removing extra closed parenthesis
 		if (openPar == '(') {
 			remove(reversedWord, result, 0, 0, ')', '(');
-		} else {
-			// Only add when checked opposite direction too
+		} else { // ')' mean we finished removing extra open parenthesis too
 			result.add(reversedWord);
 		}
 	}
