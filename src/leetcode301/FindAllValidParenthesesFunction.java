@@ -40,7 +40,7 @@ public class FindAllValidParenthesesFunction {
 			}
 		}
 
-		// No more invalid closed parenthesis
+		// For first run down, no more invalid closed parenthesis
 		// Reverse to check the if there is any extra open parenthesis
 		String reversedWord = new StringBuilder(s).reverse().toString();
 
