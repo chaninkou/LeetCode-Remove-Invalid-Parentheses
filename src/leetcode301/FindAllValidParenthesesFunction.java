@@ -19,6 +19,7 @@ public class FindAllValidParenthesesFunction {
 		int numOfClosed = 0;
 
 		for (int i = iStart; i < s.length(); i++) {
+			// Count the amount
 			if (s.charAt(i) == openPar) {
 				numOfOpen++;
 			} else if (s.charAt(i) == closedPar) {
@@ -27,7 +28,6 @@ public class FindAllValidParenthesesFunction {
 
 			// Remove extra parentheses
 			if (numOfClosed > numOfOpen) {
-				
 				// Remove the first closed parentheses from j to i, skip duplicates
 				for (int j = jStart; j <= i; j++) {
 					if (s.charAt(j) == closedPar && (j == jStart || s.charAt(j - 1) != closedPar)) {
